@@ -1,0 +1,77 @@
+import random
+
+num = random.randint(0,100)
+n = 1
+
+while True:
+    guess = int(input("guess from 1 - 100 "))
+    if guess < num:
+        print("too low")
+    elif guess > num:
+        print("too high")
+    else: 
+        print(f"you got it in {n} tries!")
+    n = n + 1
+
+
+start_stop = int(input("What number stop are you at? "))
+end_stop = int(input("What is the stop you want to go to? "))
+
+
+base_fare = 5.00
+fare_per_stop = 2.50
+
+
+number_of_stops = abs(end_stop - start_stop)
+
+
+total_fare = base_fare + (fare_per_stop * number_of_stops)
+
+
+print(f"The fare from Stop {start_stop} to Stop {end_stop} is ${total_fare:.2f}")
+
+import re
+
+password = input("enter password ")
+
+def check_password_strength(password):
+    score = 0
+
+
+    if len(password) > 7:
+        score += 1
+
+
+    if re.search(r'[A-Z]', password):
+        score += 1
+
+
+    if re.search(r'[a-z]', password):
+        score += 1
+
+
+    if re.search(r'[0-9]', password):
+        score += 1
+
+
+    if re.search(r'[^a-zA-Z0-9]', password):
+        score += 1
+
+
+    if score == 5:
+        strength = 'strong'
+    elif 3 <= score <= 4:
+        strength = 'moderately strong'
+    else:
+        strength = 'weak'
+
+    return strength
+
+
+password = input("Enter your password: ")
+
+strength = check_password_strength(password)
+
+print(f"The password is {strength}.")
+
+check_password_strength(password)
